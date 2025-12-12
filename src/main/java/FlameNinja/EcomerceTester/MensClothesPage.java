@@ -13,6 +13,21 @@ public class MensClothesPage {
 		this.driver = driver;
 	}
 	
+	public boolean CheckPage() throws Exception {
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='list']")).getShadowRoot();
+		Thread.sleep(500);
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-list[name='list']")).getShadowRoot();
+		String text = shadow1.findElement(By.cssSelector("h1")).getText();
+		if(text.contains("Men's Outerwear")) {
+			return true;
+		}
+		else {return false;}
+	}
+	
+	public HomePage ReturnToHome() {
+		return AbstractClass.GoToHomePage(driver);
+	}
+	
 	public void AddItemToCart(String cloth) throws Exception {
 		//AbstractClass.getShadowPage(driver);
 		//SearchContext shadow = AbstractClass.shadowPage;

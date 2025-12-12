@@ -23,6 +23,8 @@ public class AbstractClass {
 	}
 	
 	public static HomePage GoToHomePage(WebDriver driver) {
+		SearchContext shadow = driver.findElement(By.cssSelector("shop-app[page='list']")).getShadowRoot();
+		shadow.findElement(By.cssSelector("a[aria-label='SHOP Home']")).click();
 		return new HomePage(driver);
 	}
 	
