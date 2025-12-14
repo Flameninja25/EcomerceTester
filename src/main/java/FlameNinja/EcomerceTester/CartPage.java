@@ -40,6 +40,14 @@ public class CartPage extends AbstractClass {
 		return false;
 	}
 	
+	public int CheckDifItemsInCart() {
+		int numOfItems = 0;
+		
+		
+		
+		return numOfItems;
+	}
+	
 	public WebDriver GetDriver() {
 		return driver;
 	}

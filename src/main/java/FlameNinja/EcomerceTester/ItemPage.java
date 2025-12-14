@@ -29,4 +29,11 @@ public class ItemPage {
 		return new CartPage(driver);	
 	}
 	
+	public void StepBack() throws Exception {
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='detail']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector("paper-icon-button[aria-label='Go back']")).getShadowRoot();
+		Thread.sleep(500);
+		shadow1.findElement(By.cssSelector("#icon")).click();
+	}
+	
 }

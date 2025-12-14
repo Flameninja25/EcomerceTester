@@ -4,13 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 
-public class MensShirts {
+public class MensShirts extends ClothesGeneralPage{
 	WebDriver driver;
 	
 	public MensShirts(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 	
+	//check this is the correct page by getting the page text
 	public boolean CheckPage() throws Exception {
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='list']")).getShadowRoot();
 		Thread.sleep(500);
@@ -22,6 +24,7 @@ public class MensShirts {
 		else {return false;}
 	}
 	
+	//method to return to the home page
 	public HomePage ReturnToHome() {
 		return AbstractClass.GoToHomePage(driver);
 	}

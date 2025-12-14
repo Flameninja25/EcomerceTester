@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-12T13:10:15 GMT" name="Default suite" finished-at="2025-12-12T13:10:19 GMT" duration-ms="4257">
+  <suite started-at="2025-12-14T13:50:41 GMT" name="Default suite" finished-at="2025-12-14T13:54:55 GMT" duration-ms="254145">
     <groups>
     </groups>
-    <test started-at="2025-12-12T13:10:15 GMT" name="Default test" finished-at="2025-12-12T13:10:19 GMT" duration-ms="4257">
-      <class name="FlameNinja.EcomerceTester.HomePageTest">
-        <test-method signature="HomeLinks()[pri:0, instance:FlameNinja.EcomerceTester.HomePageTest@543295b0]" started-at="2025-12-12T13:10:15 GMT" name="HomeLinks" finished-at="2025-12-12T13:10:19 GMT" duration-ms="4234" status="PASS">
+    <test started-at="2025-12-14T13:50:41 GMT" name="Default test" finished-at="2025-12-14T13:54:55 GMT" duration-ms="254145">
+      <class name="FlameNinja.EcomerceTester.MensPageTest">
+        <test-method signature="AddAllItemsToCart()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@7ef82753]" started-at="2025-12-14T13:50:41 GMT" name="AddAllItemsToCart" finished-at="2025-12-14T13:54:47 GMT" duration-ms="245912" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- HomeLinks -->
-      </class> <!-- FlameNinja.EcomerceTester.HomePageTest -->
+        </test-method> <!-- AddAllItemsToCart -->
+        <test-method signature="GetMensCoat()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@7ef82753]" started-at="2025-12-14T13:54:47 GMT" name="GetMensCoat" finished-at="2025-12-14T13:54:55 GMT" duration-ms="8202" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GetMensCoat -->
+      </class> <!-- FlameNinja.EcomerceTester.MensPageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

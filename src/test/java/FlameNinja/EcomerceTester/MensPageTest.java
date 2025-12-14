@@ -21,7 +21,7 @@ public class MensPageTest extends GenericTest{
         assertTrue(true);
     }
     
-    //@Test
+    @Test
     public void GetMensCoat() throws Exception {
     	String coat = "Anvil L/S Crew Neck - Grey";
     	HomePage home = new HomePage(Setup());
@@ -36,7 +36,7 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
-    @Test
+    //@Test
     public void BuyMensCoat() throws Exception {
     	String email = "Test@test.com";
     	String cardName = "Jim Jones";
@@ -81,9 +81,20 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
-    public void GetWomensCoat() {
+    @Test
+    public void AddAllItemsToCart() throws Exception {
     	HomePage home = new HomePage(Setup());
-    	home.GoToWomensClothes();
+    	MensClothesPage men =  home.GoToMensClothes();
+    	String[] items = men.GetListOfItems();
+    	for(String x :items) {
+    		men.AddItemToCart(x);
+    		ItemPage itemPage = men.GoToItemPage();
+    		itemPage.AddItemToCart();
+    		Thread.sleep(500);
+    		itemPage.StepBack();
+    	}
+    	assertTrue(true);
+    	CloseDriver();
     }
     
     //@Test

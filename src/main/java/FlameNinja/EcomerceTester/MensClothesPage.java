@@ -1,18 +1,22 @@
 package FlameNinja.EcomerceTester;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MensClothesPage {
+public class MensClothesPage extends ClothesGeneralPage{
 	
 	WebDriver driver;
 	
 	public MensClothesPage(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 	
+	//check this is the correct page by getting the page text
 	public boolean CheckPage() throws Exception {
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='list']")).getShadowRoot();
 		Thread.sleep(500);
@@ -24,30 +28,37 @@ public class MensClothesPage {
 		else {return false;}
 	}
 	
+	//method to return to the home page
 	public HomePage ReturnToHome() {
 		return AbstractClass.GoToHomePage(driver);
 	}
 	
+	//add an item to the cart depending on the name of the item
 	public void AddItemToCart(String cloth) throws Exception {
 		//AbstractClass.getShadowPage(driver);
 		//SearchContext shadow = AbstractClass.shadowPage;
-		System.out.println("gaming");
-		for(int i = 1 ; i < 16 ; i++) {
-			WebElement test = AbstractClass.getItem(driver,i);
+		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {
+			WebElement test = GetItem(driver,i);
 			String shadowText = test.getText().trim();
-			System.out.println(shadowText);
-			System.out.println(cloth);
 			if(shadowText.contains(cloth)) {
 				test.click();
 				break;
-			}
-			
-			
-			
-			
+			}		
 		}
-;
-
+	}
+	
+	public void AddAllItemsToCart() throws Exception{
+		//AbstractClass.getShadowPage(driver);
+		//SearchContext shadow = AbstractClass.shadowPage;
+		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {
+			WebElement test = GetItem(driver,i);
+			test.click();
+		}
+	}
+	
+	public void GetNamesOfItems()
+	{
+		
 	}
 	
 	public ItemPage GoToItemPage() {
@@ -56,7 +67,7 @@ public class MensClothesPage {
 	
 	public void tester() {
 		try {
-			AbstractClass.getItem(driver,1).click();
+			GetItem(driver,1).click();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="FlameNinja.EcomerceTester.HomePageTest">
+      <class name="FlameNinja.EcomerceTester.MensPageTest">
         <methods>
-          <include name="HomeLinks"/>
+          <include name="AddAllItemsToCart"/>
+          <include name="GetMensCoat"/>
         </methods>
-      </class> <!-- FlameNinja.EcomerceTester.HomePageTest -->
+      </class> <!-- FlameNinja.EcomerceTester.MensPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
