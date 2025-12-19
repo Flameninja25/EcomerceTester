@@ -81,6 +81,22 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
+    public void AddTwoItemsToCart() throws Exception{
+       	String coat = "Anvil L/S Crew Neck - Grey";
+       	String coat2 = "Android Nylon Packable Jacket";
+    	HomePage home = new HomePage(Setup());
+    	MensClothesPage men =  home.GoToMensClothes();
+    	//men.tester();
+    	men.AddItemToCart(coat);
+    	ItemPage item = men.GoToItemPage();
+    	item.AddItemToCart();
+    	item.StepBack();
+    	men.AddItemToCart("Android Nylon Packable Jacket");
+    	item.AddItemToCart();
+    	CartPage cart = item.GoToCartPage();
+    	assertTrue(cart.CheckDifItemsInCart() == 2);
+    }
+    
     @Test
     public void AddAllItemsToCart() throws Exception {
     	HomePage home = new HomePage(Setup());

@@ -11,6 +11,7 @@ public class MensClothesPage extends ClothesGeneralPage{
 	
 	WebDriver driver;
 	
+	//Constructor
 	public MensClothesPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
@@ -22,6 +23,7 @@ public class MensClothesPage extends ClothesGeneralPage{
 		Thread.sleep(500);
 		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-list[name='list']")).getShadowRoot();
 		String text = shadow1.findElement(By.cssSelector("h1")).getText();
+		//Check this is Men's outerwear
 		if(text.contains("Men's Outerwear")) {
 			return true;
 		}

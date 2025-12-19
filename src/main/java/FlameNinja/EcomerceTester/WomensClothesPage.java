@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class WomensClothesPage extends ClothesGeneralPage {
 	WebDriver driver;
 	
+	//Constructor
 	public WomensClothesPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
@@ -18,6 +19,7 @@ public class WomensClothesPage extends ClothesGeneralPage {
 		Thread.sleep(500);
 		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-list[name='list']")).getShadowRoot();
 		String text = shadow1.findElement(By.cssSelector("h1")).getText();
+		//check the page is ladies outerwear
 		if(text.contains("Ladies Outerwear")) {
 			return true;
 		}
