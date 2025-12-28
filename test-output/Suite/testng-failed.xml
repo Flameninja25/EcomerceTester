@@ -2,12 +2,17 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="FullTest(failed)">
+    <groups>
+      <run>
+        <include name="Single"/>
+      </run>
+    </groups>
     <classes>
-      <class name="FlameNinja.EcomerceTester.HomePageTest">
+      <class name="FlameNinja.EcomerceTester.MensPageTest">
         <methods>
-          <include name="HomeLinks"/>
+          <include name="AddQuantOfSameItem"/>
         </methods>
-      </class> <!-- FlameNinja.EcomerceTester.HomePageTest -->
+      </class> <!-- FlameNinja.EcomerceTester.MensPageTest -->
     </classes>
   </test> <!-- FullTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -3,9 +3,11 @@ package FlameNinja.EcomerceTester;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class CartPage extends AbstractClass {
 	public WebDriver driver;
@@ -43,14 +45,42 @@ public class CartPage extends AbstractClass {
 		return false;
 	}
 	
+	public int GetItemAmount(String itemName) throws Exception {
+		//This Element is inside 3 nested shadow DOM.
+		int count = 0;
+		Thread.sleep(500);
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='cart']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-cart[name='cart']")).getShadowRoot();
+		SearchContext shadow2 = shadow1.findElement(By.cssSelector("shop-cart-item")).getShadowRoot();
+		Thread.sleep(500);
+		List<WebElement> items = shadow2.findElements(By.cssSelector(" div:nth-child(3) > div:nth-child(1) > a"));
+		if(!CheckItem(itemName)) return 0;
+		//add all the text to the list
+		for(WebElement item : items){
+			if(item.getText().contains(itemName)) {
+				break;
+			}
+			count++;
+		}
+		List<WebElement> itemSet = shadow2.findElements(By.cssSelector("#quantitySelect"));
+		WebElement itemWant = itemSet.get(count);
+		Select numSelect = new Select(itemWant);
+		WebElement item = numSelect.getFirstSelectedOption();
+		String numCon = item.getText();
+		
+		int newNum = Integer.parseInt(numCon);
+		return newNum;
+	}
+	
 	//check for each different item in the cart
 	public int CheckDifItemsInCart() throws Exception {
 		int numOfItems = 0;
 
 		Thread.sleep(1000);
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='cart']")).getShadowRoot();
-		SearchContext shadow1 = shadow0.findElement(By.cssSelector(".iron-selected")).getShadowRoot();
-		List<WebElement> items = shadow1.findElements(By.cssSelector(".name"));
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-cart[name='cart']")).getShadowRoot();
+		//List<WebElement> items = driver.findElements(By.cssSelector(".name"));
+		List<WebElement> items = shadow1.findElements(By.cssSelector("shop-cart-item"));
 		Thread.sleep(1000);
 		numOfItems = items.size();		
 		return numOfItems;

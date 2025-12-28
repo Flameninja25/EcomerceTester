@@ -27,7 +27,7 @@ public class MensPageTest extends GenericTest{
     	HomePage home = new HomePage(Setup());
     	MensClothesPage men =  home.GoToMensClothes();
     	//men.tester();
-    	men.AddItemToCart(coat);
+    	men.ChooseItem(coat);
     	ItemPage item = men.GoToItemPage();
     	item.AddItemToCart();
     	CartPage cart = item.GoToCartPage();
@@ -69,7 +69,7 @@ public class MensPageTest extends GenericTest{
     	HomePage home = new HomePage(Setup());
     	MensClothesPage men =  home.GoToMensClothes();
     	//men.tester();
-    	men.AddItemToCart(coat);
+    	men.ChooseItem(coat);
     	ItemPage item = men.GoToItemPage();
     	item.AddItemToCart();
     	CartPage cart = item.GoToCartPage();
@@ -81,20 +81,22 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
+    @Test
     public void AddTwoItemsToCart() throws Exception{
        	String coat = "Anvil L/S Crew Neck - Grey";
        	String coat2 = "Android Nylon Packable Jacket";
     	HomePage home = new HomePage(Setup());
     	MensClothesPage men =  home.GoToMensClothes();
     	//men.tester();
-    	men.AddItemToCart(coat);
+    	men.ChooseItem(coat);
     	ItemPage item = men.GoToItemPage();
     	item.AddItemToCart();
     	item.StepBack();
-    	men.AddItemToCart("Android Nylon Packable Jacket");
+    	men.ChooseItem("Android Nylon Packable Jacket");
     	item.AddItemToCart();
     	CartPage cart = item.GoToCartPage();
     	assertTrue(cart.CheckDifItemsInCart() == 2);
+    	CloseDriver();
     }
     
     @Test
@@ -103,7 +105,7 @@ public class MensPageTest extends GenericTest{
     	MensClothesPage men =  home.GoToMensClothes();
     	String[] items = men.GetListOfItems();
     	for(String x :items) {
-    		men.AddItemToCart(x);
+    		men.ChooseItem(x);
     		ItemPage itemPage = men.GoToItemPage();
     		itemPage.AddItemToCart();
     		Thread.sleep(500);
@@ -111,6 +113,37 @@ public class MensPageTest extends GenericTest{
     	}
     	assertTrue(true);
     	CloseDriver();
+    }
+    
+    @Test(groups= {"Single"})
+    public void AddQuantOfSameItem() throws Exception {
+    	String coat = "Anvil L/S Crew Neck - Grey";
+    	int quant = 4;
+    	HomePage home = new HomePage(Setup());
+    	MensClothesPage men = home.GoToMensClothes();
+    	men.ChooseItem(coat);
+    	ItemPage itemP = men.GoToItemPage();
+    	itemP.SetAmount(quant);
+    	itemP.AddItemToCart();
+    	CartPage cart = itemP.GoToCartPage();
+    	if(quant == cart.GetItemAmount(coat)) {  		
+    		assertTrue(true);
+    	}
+    	else {
+    		assertTrue(false);
+    	}
+    	CloseDriver();
+    	
+    	
+    	
+    }
+    
+    public void AddShirtOfSize() throws Exception{
+    	
+    }
+    
+    public void AddAllSizes() throws Exception {
+    	
     }
     
     //@Test

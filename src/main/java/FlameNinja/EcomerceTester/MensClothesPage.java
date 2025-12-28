@@ -36,7 +36,7 @@ public class MensClothesPage extends ClothesGeneralPage{
 	}
 	
 	//add an item to the cart depending on the name of the item
-	public void AddItemToCart(String cloth) throws Exception {
+	public void ChooseItem(String cloth) throws Exception {
 		//AbstractClass.getShadowPage(driver);
 		//SearchContext shadow = AbstractClass.shadowPage;
 		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {

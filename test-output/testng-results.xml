@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="4" total="5" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-14T13:50:41 GMT" name="Default suite" finished-at="2025-12-14T13:54:55 GMT" duration-ms="254145">
+  <suite started-at="2025-12-28T13:33:28 GMT" name="Suite" finished-at="2025-12-28T13:33:40 GMT" duration-ms="11519">
     <groups>
+      <group name="Single">
+        <method signature="MensPageTest.AddQuantOfSameItem()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@17f9d882]" name="AddQuantOfSameItem" class="FlameNinja.EcomerceTester.MensPageTest"/>
+      </group> <!-- Single -->
     </groups>
-    <test started-at="2025-12-14T13:50:41 GMT" name="Default test" finished-at="2025-12-14T13:54:55 GMT" duration-ms="254145">
+    <test started-at="2025-12-28T13:33:28 GMT" name="FullTest" finished-at="2025-12-28T13:33:40 GMT" duration-ms="11519">
       <class name="FlameNinja.EcomerceTester.MensPageTest">
-        <test-method signature="AddAllItemsToCart()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@7ef82753]" started-at="2025-12-14T13:50:41 GMT" name="AddAllItemsToCart" finished-at="2025-12-14T13:54:47 GMT" duration-ms="245912" status="PASS">
+        <test-method signature="AddQuantOfSameItem()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@17f9d882]" started-at="2025-12-28T13:33:28 GMT" name="AddQuantOfSameItem" finished-at="2025-12-28T13:33:40 GMT" duration-ms="11493" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AddAllItemsToCart -->
-        <test-method signature="GetMensCoat()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@7ef82753]" started-at="2025-12-14T13:54:47 GMT" name="GetMensCoat" finished-at="2025-12-14T13:54:55 GMT" duration-ms="8202" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- GetMensCoat -->
+        </test-method> <!-- AddQuantOfSameItem -->
       </class> <!-- FlameNinja.EcomerceTester.MensPageTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- FullTest -->
+  </suite> <!-- Suite -->
 </testng-results>
