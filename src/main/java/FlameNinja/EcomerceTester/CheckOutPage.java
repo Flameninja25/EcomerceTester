@@ -15,6 +15,7 @@ public class CheckOutPage {
 		this.driver = driver;
 	}
 	
+	//click the check out button to go to the success page
 	public SuccessPage  ClickCheckOut() throws Exception{
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='checkout']")).getShadowRoot();
 		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-checkout[name='checkout']")).getShadowRoot();
@@ -22,6 +23,7 @@ public class CheckOutPage {
 		return new SuccessPage(driver);
 	}
 	
+	//add all the details to the checkout using a list of strings
 	public void AddDetails(List<String> info) throws Exception {
 		Thread.sleep(1000);
 		SearchContext shadow2 = driver.findElement(By.cssSelector("shop-app[page='checkout']")).getShadowRoot();

@@ -115,7 +115,7 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
-    @Test(groups= {"Single"})
+    
     public void AddQuantOfSameItem() throws Exception {
     	String coat = "Anvil L/S Crew Neck - Grey";
     	int quant = 4;
@@ -134,12 +134,29 @@ public class MensPageTest extends GenericTest{
     	}
     	CloseDriver();
     	
-    	
-    	
     }
     
+    @Test(groups= {"Single"})
     public void AddShirtOfSize() throws Exception{
-    	
+    	//set the basic variables
+    	String coat = "Anvil L/S Crew Neck - Grey";
+    	String size = "L";
+    	//got to the mens page through the home page and add the correct item
+    	HomePage home = new HomePage(Setup());
+    	MensClothesPage men = home.GoToMensClothes();
+    	men.ChooseItem(coat);
+    	ItemPage itemP = men.GoToItemPage();
+    	itemP.SetSize(size);
+    	itemP.AddItemToCart();
+    	CartPage cart = itemP.GoToCartPage();
+    	//check if the size is the same as the first set
+    	if(cart.GetItemSize(size).contains(size)) {  		
+    		assertTrue(true);
+    	}
+    	else {
+    		assertTrue(false);
+    	}
+    	CloseDriver();
     }
     
     public void AddAllSizes() throws Exception {

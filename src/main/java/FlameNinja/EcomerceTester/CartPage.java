@@ -45,6 +45,7 @@ public class CartPage extends AbstractClass {
 		return false;
 	}
 	
+	//get the amount of an item in the cart based on an item name
 	public int GetItemAmount(String itemName) throws Exception {
 		//This Element is inside 3 nested shadow DOM.
 		int count = 0;
@@ -54,6 +55,7 @@ public class CartPage extends AbstractClass {
 		SearchContext shadow2 = shadow1.findElement(By.cssSelector("shop-cart-item")).getShadowRoot();
 		Thread.sleep(500);
 		List<WebElement> items = shadow2.findElements(By.cssSelector(" div:nth-child(3) > div:nth-child(1) > a"));
+		//check the item exists before looking for the wanted item
 		if(!CheckItem(itemName)) return 0;
 		//add all the text to the list
 		for(WebElement item : items){
@@ -62,6 +64,7 @@ public class CartPage extends AbstractClass {
 			}
 			count++;
 		}
+		//get a list of all the quantity selects then use the index found above to get the correct item and then get the size that is selected for the clothing
 		List<WebElement> itemSet = shadow2.findElements(By.cssSelector("#quantitySelect"));
 		WebElement itemWant = itemSet.get(count);
 		Select numSelect = new Select(itemWant);
@@ -72,16 +75,41 @@ public class CartPage extends AbstractClass {
 		return newNum;
 	}
 	
+	///method to get the item size of a wanted item
+	public String GetItemSize(String itemName) throws Exception {
+			//This Element is inside 3 nested shadow DOM.
+			int count = 0;
+			Thread.sleep(500);
+			SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='cart']")).getShadowRoot();
+			SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-cart[name='cart']")).getShadowRoot();
+			SearchContext shadow2 = shadow1.findElement(By.cssSelector("shop-cart-item")).getShadowRoot();
+			Thread.sleep(500);
+			List<WebElement> items = shadow2.findElements(By.cssSelector(" div:nth-child(3) > div:nth-child(1) > a"));
+			if(!CheckItem(itemName)) return null;
+			//add all the text to the list
+			for(WebElement item : items){
+				if(item.getText().contains(itemName)) {
+					break;
+				}
+				count++;
+			}
+			List<WebElement> itemSet = shadow2.findElements(By.cssSelector(".size"));
+			WebElement itemWant = itemSet.get(count);
+			WebElement sizeWant = itemWant.findElement(By.cssSelector("span"));
+			return sizeWant.getText();
+	}
+	
+	
 	//check for each different item in the cart
 	public int CheckDifItemsInCart() throws Exception {
 		int numOfItems = 0;
 
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='cart']")).getShadowRoot();
 		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-cart[name='cart']")).getShadowRoot();
 		//List<WebElement> items = driver.findElements(By.cssSelector(".name"));
 		List<WebElement> items = shadow1.findElements(By.cssSelector("shop-cart-item"));
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		numOfItems = items.size();		
 		return numOfItems;
 	}

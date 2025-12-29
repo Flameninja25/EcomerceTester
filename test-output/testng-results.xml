@@ -2,18 +2,18 @@
 <testng-results ignored="4" total="5" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-28T13:33:28 GMT" name="Suite" finished-at="2025-12-28T13:33:40 GMT" duration-ms="11519">
+  <suite started-at="2025-12-29T12:05:44 GMT" name="Suite" finished-at="2025-12-29T12:05:56 GMT" duration-ms="12542">
     <groups>
       <group name="Single">
-        <method signature="MensPageTest.AddQuantOfSameItem()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@17f9d882]" name="AddQuantOfSameItem" class="FlameNinja.EcomerceTester.MensPageTest"/>
+        <method signature="MensPageTest.AddShirtOfSize()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@17f9d882]" name="AddShirtOfSize" class="FlameNinja.EcomerceTester.MensPageTest"/>
       </group> <!-- Single -->
     </groups>
-    <test started-at="2025-12-28T13:33:28 GMT" name="FullTest" finished-at="2025-12-28T13:33:40 GMT" duration-ms="11519">
+    <test started-at="2025-12-29T12:05:44 GMT" name="FullTest" finished-at="2025-12-29T12:05:56 GMT" duration-ms="12542">
       <class name="FlameNinja.EcomerceTester.MensPageTest">
-        <test-method signature="AddQuantOfSameItem()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@17f9d882]" started-at="2025-12-28T13:33:28 GMT" name="AddQuantOfSameItem" finished-at="2025-12-28T13:33:40 GMT" duration-ms="11493" status="PASS">
+        <test-method signature="AddShirtOfSize()[pri:0, instance:FlameNinja.EcomerceTester.MensPageTest@17f9d882]" started-at="2025-12-29T12:05:44 GMT" name="AddShirtOfSize" finished-at="2025-12-29T12:05:56 GMT" duration-ms="12514" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AddQuantOfSameItem -->
+        </test-method> <!-- AddShirtOfSize -->
       </class> <!-- FlameNinja.EcomerceTester.MensPageTest -->
     </test> <!-- FullTest -->
   </suite> <!-- Suite -->

@@ -49,6 +49,7 @@ public class MensClothesPage extends ClothesGeneralPage{
 		}
 	}
 	
+	//go through every item and add them all to the cart
 	public void AddAllItemsToCart() throws Exception{
 		//AbstractClass.getShadowPage(driver);
 		//SearchContext shadow = AbstractClass.shadowPage;
@@ -63,6 +64,7 @@ public class MensClothesPage extends ClothesGeneralPage{
 		
 	}
 	
+	//go to the item page
 	public ItemPage GoToItemPage() {
 		return new ItemPage(driver);
 	}
