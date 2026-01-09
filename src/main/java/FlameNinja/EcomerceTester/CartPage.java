@@ -1,5 +1,6 @@
 package FlameNinja.EcomerceTester;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -97,6 +98,62 @@ public class CartPage extends AbstractClass {
 			WebElement itemWant = itemSet.get(count);
 			WebElement sizeWant = itemWant.findElement(By.cssSelector("span"));
 			return sizeWant.getText();
+	}
+	
+	public boolean CheckDifSizes(String itemName, String[] sizes) throws Exception {
+		//This Element is inside 3 nested shadow DOM.
+		ArrayList<Integer> indexes = new ArrayList<Integer>();
+		int count = 0;
+		List<WebElement> items = new ArrayList<WebElement>();
+		List<SearchContext> shadows = new ArrayList<SearchContext>(); 
+		Thread.sleep(500);
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='cart']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-cart[name='cart']")).getShadowRoot();
+		SearchContext shadow2 = shadow1.findElement(By.cssSelector("shop-cart-item")).getShadowRoot();
+		//loops to get shadow roots for each item
+		for(int k = 1;k < sizes.length+1;k++) {
+			Thread.sleep(500);
+			shadows.add(shadow1.findElement(By.cssSelector(" div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > shop-cart-item:nth-child("+k+")")).getShadowRoot());
+		}
+		System.out.println(shadows.size());
+		// cant find element
+		for(SearchContext x : shadows) {
+			items.add(x.findElement(By.cssSelector(" div:nth-child(3) > div:nth-child(1) > a:nth-child(1)")));
+		}
+		Thread.sleep(500);
+		if(!CheckItem(itemName)) return false;
+		//add all the text to the list
+		for(WebElement item : items){
+			if(item.getText().contains(itemName)) {
+				indexes.add(count);
+			}
+			count++;
+		}
+		ArrayList<Boolean> truths = new ArrayList<Boolean>();
+		List<WebElement> itemSet = new ArrayList<WebElement>();
+		for(SearchContext x : shadows) {
+			itemSet.add(x.findElement(By.cssSelector(".size")));
+		}
+		for(int i = 0; i < indexes.size(); i++) {
+			for(int j = 0; j < sizes.length; j++) {
+				WebElement itemWant = itemSet.get(indexes.get(i));
+				WebElement sizeWant = itemWant.findElement(By.cssSelector("span"));
+				if(sizeWant.getText().equals(sizes[j])) {
+					truths.add(true);
+				}
+			}
+		} 
+		if(truths.size() == sizes.length) {
+			for(boolean x : truths) {
+				if(x == false) {
+					return false;
+				}
+			}
+		}
+		else{
+			return false;
+		}
+		return true;
 	}
 	
 	

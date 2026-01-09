@@ -10,7 +10,7 @@
     <classes>
       <class name="FlameNinja.EcomerceTester.MensPageTest">
         <methods>
-          <include name="AddQuantOfSameItem"/>
+          <include name="AddAllSizes"/>
         </methods>
       </class> <!-- FlameNinja.EcomerceTester.MensPageTest -->
     </classes>

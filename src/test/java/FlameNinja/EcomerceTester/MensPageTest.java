@@ -3,6 +3,7 @@ package FlameNinja.EcomerceTester;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.testng.annotations.Test;
@@ -115,7 +116,7 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
-    
+    @Test
     public void AddQuantOfSameItem() throws Exception {
     	String coat = "Anvil L/S Crew Neck - Grey";
     	int quant = 4;
@@ -136,7 +137,7 @@ public class MensPageTest extends GenericTest{
     	
     }
     
-    @Test(groups= {"Single"})
+    @Test//(groups= {"Single"})
     public void AddShirtOfSize() throws Exception{
     	//set the basic variables
     	String coat = "Anvil L/S Crew Neck - Grey";
@@ -150,7 +151,7 @@ public class MensPageTest extends GenericTest{
     	itemP.AddItemToCart();
     	CartPage cart = itemP.GoToCartPage();
     	//check if the size is the same as the first set
-    	if(cart.GetItemSize(size).contains(size)) {  		
+    	if(cart.GetItemSize(coat).contains(size)) {  		
     		assertTrue(true);
     	}
     	else {
@@ -159,8 +160,30 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
+    @Test(groups= {"Single"})
     public void AddAllSizes() throws Exception {
+    	//set the basic variables
+    	String coat = "Anvil L/S Crew Neck - Grey";
+    	String[] size = {"XS","S","M","L","XL"};
+    	//got to the mens page through the home page and add the correct item
+    	HomePage home = new HomePage(Setup());
+    	MensClothesPage men = home.GoToMensClothes();
+    	men.ChooseItem(coat);
+    	ItemPage itemP = men.GoToItemPage();
+    	for(String x :size) {
+        	itemP.SetSize(x);
+        	itemP.AddItemToCart();
+    	}
+    	CartPage cart = itemP.GoToCartPage();
+    	//check if the size is the same as the first set  		
+    	if(cart.CheckDifSizes(coat, size)) { 			
+    		assertTrue(true);
+    	}
+    	else {
+    		assertTrue(false);
+    	}
     	
+    	CloseDriver();
     }
     
     //@Test

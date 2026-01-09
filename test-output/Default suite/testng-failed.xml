@@ -5,8 +5,11 @@
     <classes>
       <class name="FlameNinja.EcomerceTester.MensPageTest">
         <methods>
+          <include name="AddAllSizes"/>
           <include name="AddAllItemsToCart"/>
+          <include name="AddShirtOfSize"/>
           <include name="GetMensCoat"/>
+          <include name="AddQuantOfSameItem"/>
           <include name="AddTwoItemsToCart"/>
         </methods>
       </class> <!-- FlameNinja.EcomerceTester.MensPageTest -->
