@@ -64,11 +64,6 @@ public class MensClothesPage extends ClothesGeneralPage{
 		
 	}
 	
-	//go to the item page
-	public ItemPage GoToItemPage() {
-		return new ItemPage(driver);
-	}
-	
 	public void tester() {
 		try {
 			GetItem(driver,1).click();

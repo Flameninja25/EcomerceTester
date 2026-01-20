@@ -170,6 +170,7 @@ public class MensPageTest extends GenericTest{
     	MensClothesPage men = home.GoToMensClothes();
     	men.ChooseItem(coat);
     	ItemPage itemP = men.GoToItemPage();
+    	//loop through each size and add them to the cart
     	for(String x :size) {
         	itemP.SetSize(x);
         	itemP.AddItemToCart();

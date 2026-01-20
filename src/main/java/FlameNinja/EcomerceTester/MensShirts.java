@@ -3,6 +3,7 @@ package FlameNinja.EcomerceTester;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class MensShirts extends ClothesGeneralPage{
 	WebDriver driver;
@@ -29,5 +30,35 @@ public class MensShirts extends ClothesGeneralPage{
 	//method to return to the home page
 	public HomePage ReturnToHome() {
 		return AbstractClass.GoToHomePage(driver);
+	}
+	
+	
+	//add an item to the cart depending on the name of the item
+	public void ChooseItem(String cloth) throws Exception {
+		//AbstractClass.getShadowPage(driver);
+		//SearchContext shadow = AbstractClass.shadowPage;
+		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {
+			WebElement test = GetItem(driver,i);
+			String shadowText = test.getText().trim();
+			if(shadowText.contains(cloth)) {
+				test.click();
+				break;
+			}		
+		}
+	}
+	
+	//go through every item and add them all to the cart
+	public void AddAllItemsToCart() throws Exception{
+		//AbstractClass.getShadowPage(driver);
+		//SearchContext shadow = AbstractClass.shadowPage;
+		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {
+			WebElement test = GetItem(driver,i);
+			test.click();
+		}
+	}
+	
+	public void GetNamesOfItems()
+	{
+		
 	}
 }

@@ -60,4 +60,9 @@ public class ClothesGeneralPage {
 		return lastArray;
 	}
 	
+	//go to the item page
+	public ItemPage GoToItemPage() {
+		return new ItemPage(driver);
+	}
+	
 }

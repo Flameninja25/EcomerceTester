@@ -101,11 +101,12 @@ public class CartPage extends AbstractClass {
 	}
 	
 	public boolean CheckDifSizes(String itemName, String[] sizes) throws Exception {
-		//This Element is inside 3 nested shadow DOM.
+		//Prepare the lists to be filled later in the code
 		ArrayList<Integer> indexes = new ArrayList<Integer>();
 		int count = 0;
 		List<WebElement> items = new ArrayList<WebElement>();
 		List<SearchContext> shadows = new ArrayList<SearchContext>(); 
+		//get the shadows needed to access the shop items
 		Thread.sleep(500);
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='cart']")).getShadowRoot();
 		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-cart[name='cart']")).getShadowRoot();
@@ -115,14 +116,14 @@ public class CartPage extends AbstractClass {
 			Thread.sleep(500);
 			shadows.add(shadow1.findElement(By.cssSelector(" div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > shop-cart-item:nth-child("+k+")")).getShadowRoot());
 		}
-		System.out.println(shadows.size());
-		// cant find element
+		//get each item
 		for(SearchContext x : shadows) {
 			items.add(x.findElement(By.cssSelector(" div:nth-child(3) > div:nth-child(1) > a:nth-child(1)")));
 		}
 		Thread.sleep(500);
+		//make sure there is an itemname
 		if(!CheckItem(itemName)) return false;
-		//add all the text to the list
+		//check if the item has the correct name and then add it to the list
 		for(WebElement item : items){
 			if(item.getText().contains(itemName)) {
 				indexes.add(count);
@@ -130,10 +131,12 @@ public class CartPage extends AbstractClass {
 			count++;
 		}
 		ArrayList<Boolean> truths = new ArrayList<Boolean>();
+		//list for the general items to get the there size later
 		List<WebElement> itemSet = new ArrayList<WebElement>();
 		for(SearchContext x : shadows) {
 			itemSet.add(x.findElement(By.cssSelector(".size")));
 		}
+		//loop through all the items and sizes to make sure at least one of each size has been added to the cart
 		for(int i = 0; i < indexes.size(); i++) {
 			for(int j = 0; j < sizes.length; j++) {
 				WebElement itemWant = itemSet.get(indexes.get(i));
@@ -143,6 +146,7 @@ public class CartPage extends AbstractClass {
 				}
 			}
 		} 
+		//check that there is the correct amount of sizes before fully checking, only returning if they are all true
 		if(truths.size() == sizes.length) {
 			for(boolean x : truths) {
 				if(x == false) {
