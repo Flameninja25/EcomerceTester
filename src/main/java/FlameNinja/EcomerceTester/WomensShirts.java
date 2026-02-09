@@ -38,10 +38,10 @@ public class WomensShirts extends ClothesGeneralPage{
 		//AbstractClass.getShadowPage(driver);
 		//SearchContext shadow = AbstractClass.shadowPage;
 		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {
-			WebElement test = GetItem(driver,i);
-			String shadowText = test.getText().trim();
+			SearchContext test = GetItem(driver,i);
+			String shadowText = test.findElement(By.cssSelector(".title")).getText().trim();
 			if(shadowText.contains(cloth)) {
-				test.click();
+				test.findElement(By.cssSelector(".title")).click();
 				break;
 			}		
 		}
@@ -52,9 +52,23 @@ public class WomensShirts extends ClothesGeneralPage{
 		//AbstractClass.getShadowPage(driver);
 		//SearchContext shadow = AbstractClass.shadowPage;
 		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {
-			WebElement test = GetItem(driver,i);
-			test.click();
+			SearchContext test = GetItem(driver,i);
+			test.findElement(By.cssSelector(".title")).click();
 		}
+	}
+	
+	//get price of an item from the name
+	public String GetItemPrice(String itemName) throws Exception {
+		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {
+			SearchContext test = GetItem(driver,i);
+			//find item with the name and then get the price
+			String shadowText = test.findElement(By.cssSelector(".title")).getText().trim();
+			if(shadowText.contains(itemName)) {
+				String itemPrice = test.findElement(By.cssSelector(".price")).getText();
+				return itemPrice;
+			}		
+		}
+		return "Invalid";
 	}
 	
 	public void GetNamesOfItems()

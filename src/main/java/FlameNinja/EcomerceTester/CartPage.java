@@ -160,6 +160,26 @@ public class CartPage extends AbstractClass {
 		return true;
 	}
 	
+	//get an item in the cart
+	public WebElement GetItemInCart(String itemName) throws Exception {
+		//This Element is inside 3 nested shadow DOM.
+		int count = 0;
+		Thread.sleep(500);
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='cart']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-cart[name='cart']")).getShadowRoot();
+		SearchContext shadow2 = shadow1.findElement(By.cssSelector("shop-cart-item")).getShadowRoot();
+		Thread.sleep(500);
+		List<WebElement> items = shadow2.findElements(By.cssSelector(" div:nth-child(3) > div:nth-child(1) > a"));
+		if(!CheckItem(itemName)) return null;
+		//add all the text to the list
+		for(WebElement item : items){
+			if(item.getText().contains(itemName)) {
+				break;
+			}
+			count++;
+		}
+		return items.get(count);
+	}
 	
 	//check for each different item in the cart
 	public int CheckDifItemsInCart() throws Exception {
@@ -173,6 +193,15 @@ public class CartPage extends AbstractClass {
 		Thread.sleep(500);
 		numOfItems = items.size();		
 		return numOfItems;
+	}
+	
+	boolean ValidateItemPrice(String itemName,String price) throws Exception {
+		WebElement item = GetItemInCart(itemName);
+		String money = item.findElement(By.cssSelector(".price")).getText();
+		if(money.contains(price)) {
+			return true;
+		}
+		else {return false;}
 	}
 	
 	public WebDriver GetDriver() {

@@ -35,14 +35,13 @@ public class ClothesGeneralPage {
 	}
 	
 	//static method to get the item by going through all the shadowdoms as all pages share same paths
-	public WebElement GetItem(WebDriver driver, int i) throws InterruptedException {
+	public SearchContext GetItem(WebDriver driver, int i) throws InterruptedException {
 
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='list']")).getShadowRoot();
 		Thread.sleep(500);
 		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-list[name='list']")).getShadowRoot();
-		SearchContext shadow2 = shadow1.findElement(By.cssSelector(" ul:nth-child(6) > li:nth-child("+i+") > a:nth-child(1) > shop-list-item:nth-child(1)")).getShadowRoot();
-		Thread.sleep(500);
-		return shadow2.findElement(By.cssSelector(".title"));
+		return shadow1.findElement(By.cssSelector(" ul:nth-child(6) > li:nth-child("+i+") > a:nth-child(1) > shop-list-item:nth-child(1)")).getShadowRoot();
+
 	}
 	
 	//get a list of all the items on the current page
@@ -50,8 +49,8 @@ public class ClothesGeneralPage {
 		ArrayList<String> itemNames = new ArrayList<String>();
 		//add all the items to the list
 		for(int i = 1; i < GetNumberOfItems(driver); i++) {
-			WebElement item = GetItem(driver, i);
-			String text = item.getText();
+			SearchContext item = GetItem(driver, i);
+			String text = item.findElement(By.cssSelector(".title")).getText();
 			itemNames.add(text);
 		}
 		//convert the list to an array
