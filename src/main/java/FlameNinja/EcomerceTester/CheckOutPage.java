@@ -34,21 +34,21 @@ public class CheckOutPage {
 	}
 	
 	//add all the details to the checkout using a list of strings
-	public void AddDetails(List<String> info) throws Exception {
+	public boolean AddDetails(List<String> info) throws Exception {
 		Thread.sleep(1000);
 		SearchContext shadow2 = driver.findElement(By.cssSelector("shop-app[page='checkout']")).getShadowRoot();
 		Thread.sleep(500);
 		SearchContext shadowMain = shadow2.findElement(By.cssSelector("shop-checkout[class$='iron-selected']")).getShadowRoot();
 		Thread.sleep(500);
-		EnterEmail(info.get(0));
-		EnterName(info.get(1));
-		EnterPhoneNumber(info.get(2));
-		EnterCCNumber(info.get(3));
-		EnterAddress(info.get(4));
-		EnterCity(info.get(5));
-		EnterState(info.get(6));
-		EnterZip(info.get(7));
-		EnterCVV(info.get(8));
+		if(!EnterEmail(info.get(0))){return false;}
+		if(!EnterName(info.get(1))){return false;}
+		if(!EnterPhoneNumber(info.get(2))){return false;}
+		if(!EnterCCNumber(info.get(3))){return false;}
+		if(!EnterAddress(info.get(4))){return false;}
+		if(!EnterCity(info.get(5))){return false;}
+		if(!EnterState(info.get(6))){return false;}
+		if(!EnterZip(info.get(7))){return false;}
+		if(!EnterCVV(info.get(8))){return false;}
 		
 		String[] date = info.get(9).split("\\s+");
 		
@@ -60,6 +60,7 @@ public class CheckOutPage {
 		
 		Select selectCountry = new Select(shadowMain.findElement(By.cssSelector("#shipCountry")));
 		selectCountry.selectByVisibleText(info.get(10));
+		return true;
 	}
 	
 	public boolean CheckItemPrice(String itemName, String price) throws Exception {
