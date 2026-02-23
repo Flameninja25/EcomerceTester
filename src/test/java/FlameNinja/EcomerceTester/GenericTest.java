@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GenericTest {
 	
@@ -38,5 +39,14 @@ public class GenericTest {
 		
 		
 		return null;
+	}
+	
+	public static void IfAssertFails(boolean truth) {
+		if(!truth) {
+			assertTrue(false);
+		}
+		else {
+			
+		}
 	}
 }

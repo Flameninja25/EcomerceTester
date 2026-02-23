@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class CartTest extends GenericTest {
     @Test
-    public void GetMensCoat() throws Exception {
+    public void CheckItemPrice() throws Exception {
     	String coat = "Anvil L/S Crew Neck - Grey";
     	String priceWanted = "$22.15";
     	HomePage home = new HomePage(Setup());

@@ -9,6 +9,8 @@
       <class name="FlameNinja.EcomerceTester.WomansPageTest"/>
       <class name="FlameNinja.EcomerceTester.MensShirtsTest"/>
       <class name="FlameNinja.EcomerceTester.WomenShirtsTest"/>
+      <class name="FlameNinja.EcomerceTester.CartTest"/>
+      <class name="FlameNinja.EcomerceTester.HomePageTest"/>
     </classes>
   </test> <!--Test for Submitting an Order-->
   
