@@ -39,6 +39,7 @@ public class ItemPage {
 		SearchContext shadow1 = shadow0.findElement(By.cssSelector("paper-icon-button[aria-label='Go back']")).getShadowRoot();
 		Thread.sleep(500);
 		shadow1.findElement(By.cssSelector("#icon")).click();
+		Thread.sleep(500);
 	}
 	
 	//Sets the amount wanted for the current item

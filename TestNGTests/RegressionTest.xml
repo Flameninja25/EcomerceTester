@@ -7,10 +7,11 @@
       <!--<class name="FlameNinja.EcomerceTester.HomePageTest"/>-->
       <class name="FlameNinja.EcomerceTester.MensPageTest"/>
       <class name="FlameNinja.EcomerceTester.WomansPageTest"/>
-      <class name="FlameNinja.EcomerceTester.MensShirtsTest"/>
-      <class name="FlameNinja.EcomerceTester.WomenShirtsTest"/>
+      <class name="FlameNinja.EcomerceTester.MensShirtTest"/>
+      <class name="FlameNinja.EcomerceTester.WomenShirtTest"/>
       <class name="FlameNinja.EcomerceTester.CartTest"/>
       <class name="FlameNinja.EcomerceTester.HomePageTest"/>
+      <class name="FlameNinja.EcomerceTester.CheckOutTest"/>
     </classes>
   </test> <!--Test for Submitting an Order-->
   

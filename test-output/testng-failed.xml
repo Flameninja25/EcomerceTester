@@ -8,11 +8,11 @@
       </run>
     </groups>
     <classes>
-      <class name="FlameNinja.EcomerceTester.MensPageTest">
+      <class name="FlameNinja.EcomerceTester.CheckOutTest">
         <methods>
-          <include name="AddAllSizes"/>
+          <include name="OrderPrice"/>
         </methods>
-      </class> <!-- FlameNinja.EcomerceTester.MensPageTest -->
+      </class> <!-- FlameNinja.EcomerceTester.CheckOutTest -->
     </classes>
   </test> <!-- FullTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

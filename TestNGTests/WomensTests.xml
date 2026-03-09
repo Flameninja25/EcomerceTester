@@ -6,7 +6,7 @@
     <classes> 
       <!--<class name="FlameNinja.EcomerceTester.HomePageTest"/>-->
       <class name="FlameNinja.EcomerceTester.WomansPageTest"/>
-      <class name="FlameNinja.EcomerceTester.WomenShirtsTest"/>
+      <class name="FlameNinja.EcomerceTester.WomensShirtTest"/>
     </classes>
   </test> <!--Test for Submitting an Order-->
   

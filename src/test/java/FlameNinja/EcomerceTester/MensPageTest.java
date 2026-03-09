@@ -160,7 +160,7 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
-    @Test(groups= {"Single"})
+    @Test//(groups= {"Single"})
     public void AddAllSizes() throws Exception {
     	//set the basic variables
     	String coat = "Anvil L/S Crew Neck - Grey";

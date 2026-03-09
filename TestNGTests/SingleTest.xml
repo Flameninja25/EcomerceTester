@@ -10,8 +10,8 @@
 
    <test thread-count="5" name="FullTest">
     <classes> 
-      <class name="FlameNinja.EcomerceTester.HomePageTest"/>
-      <class name="FlameNinja.EcomerceTester.MensPageTest"/>
+
+      <class name="FlameNinja.EcomerceTester.CheckOutTest"/>    
     </classes>
   </test> <!--Test for Submitting an Order-->
   

@@ -27,6 +27,17 @@ public class GenericTest {
 		return driver;
 	}
 	
+	public static CheckOutPage GoToCheckOut() throws Exception{
+		HomePage home = new HomePage(Setup());
+		MensShirts men = home.GoToMensShirts();
+		men.ChooseItem("Adult Android Superhero T-Shirt");
+		ItemPage item = men.GoToItemPage();
+		item.AddItemToCart();
+		CartPage cart = item.GoToCartPage();
+		CheckOutPage check = cart.GoToCheckout();
+		return check;
+	}
+	
 	public static void CheckOutButton() {
 		
 	}

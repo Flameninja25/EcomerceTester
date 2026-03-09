@@ -86,6 +86,19 @@ public class CheckOutPage {
 		return false;
 	}
 	
+	public boolean CheckTotalPrice(String price) throws Exception {
+		Thread.sleep(500);
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='checkout']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector("shop-checkout[name='checkout']")).getShadowRoot();
+		Thread.sleep(500);
+		WebElement total = shadow1.findElement(By.cssSelector(".row.total-row"));
+		String totalPrice = total.findElement(By.cssSelector("div:nth-child(2)")).getText();
+		if(totalPrice.contains(price)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean EnterEmail(String email) throws Exception {
 		GetShadow();
 		ShadowUse.findElement(By.cssSelector("#accountEmail")).sendKeys(email);
