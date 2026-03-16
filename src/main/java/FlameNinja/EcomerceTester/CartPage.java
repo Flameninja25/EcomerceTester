@@ -100,6 +100,7 @@ public class CartPage extends AbstractClass {
 			return sizeWant.getText();
 	}
 	
+	//check the different sizes in an array based on a certain item
 	public boolean CheckDifSizes(String itemName, String[] sizes) throws Exception {
 		//Prepare the lists to be filled later in the code
 		ArrayList<Integer> indexes = new ArrayList<Integer>();
@@ -195,6 +196,7 @@ public class CartPage extends AbstractClass {
 		return numOfItems;
 	}
 	
+	//check the price in the cart is correct
 	boolean ValidateItemPrice(String itemName,String price) throws Exception {
 		WebElement item = GetItemInCart(itemName);
 		String money = item.findElement(By.cssSelector(".price")).getText();

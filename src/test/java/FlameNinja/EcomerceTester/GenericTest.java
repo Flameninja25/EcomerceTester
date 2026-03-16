@@ -27,6 +27,7 @@ public class GenericTest {
 		return driver;
 	}
 	
+	//a quick method to get to the checkout page for testing
 	public static CheckOutPage GoToCheckOut() throws Exception{
 		HomePage home = new HomePage(Setup());
 		MensShirts men = home.GoToMensShirts();

@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 public class HomePageTest extends GenericTest{
 
 	@Test
+	//go to each page using the top links
 	public void HomeLinks() throws Exception {
 		ArrayList<Boolean> pages = new ArrayList<Boolean>();
 		HomePage homePage = new HomePage(Setup());

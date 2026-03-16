@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 public class CheckOutTest extends GenericTest{
 
 	@Test
+	//check that the item in checkout is equal to the price displayed under the item
 	public void CheckoutPrice() throws Exception {
     	String coat = "Adult Android Superhero T-Shirt";
     	String price ="$14.95";
@@ -24,6 +25,7 @@ public class CheckOutTest extends GenericTest{
 	}
 	
 	 @Test(groups= {"Single"})
+	 //check that the full order price is equal to the sum of the items
 	public void OrderPrice() throws Exception{
 		String coatOne = "Adult Android Superhero T-Shirt";
 		String coatTwo = "Local Guides T-Shirt";
@@ -52,6 +54,7 @@ public class CheckOutTest extends GenericTest{
     	
 	}
 	 
+	 //validation for each field
 	 @Test
 	public void ValidateEmail() throws Exception{
 		String failEmail = "fail";

@@ -8,11 +8,13 @@ import java.util.List;
 import org.testng.annotations.Test;
 
 public class WomansShirtTest extends GenericTest{
-	  @Test
-	    public void GetWomenShirt() throws Exception {
-	    	String coat = "Ladies Google New York T-Shirt";
-	    	HomePage home = new HomePage(Setup());
-	    	WomensShirts men =  home.GoToWomensShirts();
+	
+		@Test
+		//test to get an item and confirm it's in the cart
+	  	public void GetWomenShirt() throws Exception {
+		  String coat = "Ladies Google New York T-Shirt";
+		  HomePage home = new HomePage(Setup());
+		  WomensShirts men =  home.GoToWomensShirts();
 	    	//men.tester();
 	    	men.ChooseItem(coat);
 	    	ItemPage item = men.GoToItemPage();
@@ -23,7 +25,8 @@ public class WomansShirtTest extends GenericTest{
 	    	CloseDriver();
 	    }
 	    
-	    //@Test
+	    @Test
+	    //a full test from selecting an item to the checkout
 	    public void BuyWomensShirt() throws Exception {
 	    	String email = "Test@test.com";
 	    	String cardName = "Jim Jones";
@@ -69,6 +72,7 @@ public class WomansShirtTest extends GenericTest{
 	    }
 	    
 	    @Test
+	    //Add 2 specified items to the cart
 	    public void AddTwoItemsToCart() throws Exception{
 	       	String coat = "Ladies Google New York T-Shirt";
 	       	String coat2 = "Bella Ladies Favorite Tee";
@@ -87,6 +91,7 @@ public class WomansShirtTest extends GenericTest{
 	    }
 	    
 	    @Test
+	    //add all items on the page to the cart
 	    public void AddAllItemsToCart() throws Exception {
 	    	HomePage home = new HomePage(Setup());
 	    	WomensShirts men =  home.GoToWomensShirts();
@@ -103,6 +108,7 @@ public class WomansShirtTest extends GenericTest{
 	    }
 	    
 	    @Test
+	    //add multiple of one item
 	    public void AddQuantOfSameItem() throws Exception {
 	    	String coat = "Ladies Google New York T-Shirt";
 	    	int quant = 4;
@@ -124,6 +130,7 @@ public class WomansShirtTest extends GenericTest{
 	    }
 	    
 	    @Test//(groups= {"Single"})
+	  //add an item of a specified size
 	    public void AddShirtOfSize() throws Exception{
 	    	//set the basic variables
 	    	String coat = "Ladies Google New York T-Shirt";

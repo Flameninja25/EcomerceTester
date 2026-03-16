@@ -26,6 +26,7 @@ public class CheckOutPage {
 		return new SuccessPage(driver);
 	}
 	
+	//get the general shadow for the checkout page elements
 	public void GetShadow() throws Exception {
 		Thread.sleep(500);
 		SearchContext shadow2 = driver.findElement(By.cssSelector("shop-app[page='checkout']")).getShadowRoot();
@@ -86,6 +87,7 @@ public class CheckOutPage {
 		return false;
 	}
 	
+	//get the total price and compare it to a string price
 	public boolean CheckTotalPrice(String price) throws Exception {
 		Thread.sleep(500);
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='checkout']")).getShadowRoot();
@@ -99,6 +101,7 @@ public class CheckOutPage {
 		return false;
 	}
 	
+	//enter and check each of the fields
 	public boolean EnterEmail(String email) throws Exception {
 		GetShadow();
 		ShadowUse.findElement(By.cssSelector("#accountEmail")).sendKeys(email);

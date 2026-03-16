@@ -8,7 +8,8 @@ import java.util.List;
 import org.testng.annotations.Test;
 
 public class WomansPageTest extends GenericTest{
-	  @Test
+	  	@Test
+	  	//test to get an item and confirm it's in the cart
 	    public void GetWomensCoat() throws Exception {
 	    	String coat = "Ladies Colorblock Wind Jacket";
 	    	HomePage home = new HomePage(Setup());
@@ -23,7 +24,8 @@ public class WomansPageTest extends GenericTest{
 	    	CloseDriver();
 	    }
 	    
-	    //@Test
+	    @Test
+	  	//a full test from selecting an item to the checkout
 	    public void BuyWomensCoat() throws Exception {
 	    	String email = "Test@test.com";
 	    	String cardName = "Jim Jones";
@@ -69,6 +71,7 @@ public class WomansPageTest extends GenericTest{
 	    }
 	    
 	    @Test
+	    //Add 2 specified items to the cart
 	    public void AddTwoItemsToCart() throws Exception{
 	       	String coat = "Ladies Colorblock Wind Jacket";
 	       	String coat2 = "Ladies Pullover L/S Hood";
@@ -87,6 +90,7 @@ public class WomansPageTest extends GenericTest{
 	    }
 	    
 	    @Test
+	    //add all the items on the page to the cart
 	    public void AddAllItemsToCart() throws Exception {
 	    	HomePage home = new HomePage(Setup());
 	    	WomensClothesPage men =  home.GoToWomensClothes();
@@ -103,6 +107,7 @@ public class WomansPageTest extends GenericTest{
 	    }
 	    
 	    @Test
+	    //add multiple of one item
 	    public void AddQuantOfSameItem() throws Exception {
 	    	String coat = "Ladies Colorblock Wind Jacket";
 	    	int quant = 4;
@@ -124,7 +129,8 @@ public class WomansPageTest extends GenericTest{
 	    }
 	    
 	    @Test//(groups= {"Single"})
-	    public void AddShirtOfSize() throws Exception{
+	    //add an item of a specified size
+	    public void AddItemOfSize() throws Exception{
 	    	//set the basic variables
 	    	String coat = "Ladies Colorblock Wind Jacket";
 	    	String size = "L";

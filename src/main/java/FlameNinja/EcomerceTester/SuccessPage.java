@@ -12,6 +12,7 @@ public class SuccessPage {
 		this.driver = driver;
 	}
 	
+	//click the last button to finish the order
 	public void ClickFinish() throws Exception {
 		Thread.sleep(1000);
 		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='checkout']")).getShadowRoot();

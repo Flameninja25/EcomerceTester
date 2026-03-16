@@ -15,14 +15,9 @@ import FlameNinja.EcomerceTester.HomePage;
  */
 public class MensPageTest extends GenericTest{
 
-    /**
-     * Rigorous Test :-)
-     */
-    public void shouldAnswerWithTrue() {
-        assertTrue(true);
-    }
     
     @Test
+    //test to get an item and confirm it's in the cart
     public void GetMensCoat() throws Exception {
     	String coat = "Anvil L/S Crew Neck - Grey";
     	HomePage home = new HomePage(Setup());
@@ -37,7 +32,8 @@ public class MensPageTest extends GenericTest{
     	CloseDriver();
     }
     
-    //@Test
+    @Test
+    //a full test from selecting an item to the checkout
     public void BuyMensCoat() throws Exception {
     	String email = "Test@test.com";
     	String cardName = "Jim Jones";
@@ -83,6 +79,7 @@ public class MensPageTest extends GenericTest{
     }
     
     @Test
+    //Add 2 specified items to the cart
     public void AddTwoItemsToCart() throws Exception{
        	String coat = "Anvil L/S Crew Neck - Grey";
        	String coat2 = "Android Nylon Packable Jacket";
@@ -101,6 +98,7 @@ public class MensPageTest extends GenericTest{
     }
     
     @Test
+    //add all the items on the page to the cart
     public void AddAllItemsToCart() throws Exception {
     	HomePage home = new HomePage(Setup());
     	MensClothesPage men =  home.GoToMensClothes();
@@ -117,6 +115,7 @@ public class MensPageTest extends GenericTest{
     }
     
     @Test
+  //add multiple of one item
     public void AddQuantOfSameItem() throws Exception {
     	String coat = "Anvil L/S Crew Neck - Grey";
     	int quant = 4;
@@ -138,7 +137,8 @@ public class MensPageTest extends GenericTest{
     }
     
     @Test//(groups= {"Single"})
-    public void AddShirtOfSize() throws Exception{
+    //add an item of a specified size
+    public void AddItemOfSize() throws Exception{
     	//set the basic variables
     	String coat = "Anvil L/S Crew Neck - Grey";
     	String size = "L";

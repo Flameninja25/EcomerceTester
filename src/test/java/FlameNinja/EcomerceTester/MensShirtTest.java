@@ -8,7 +8,8 @@ import java.util.List;
 import org.testng.annotations.Test;
 
 public class MensShirtTest extends GenericTest{
-	  @Test
+	  	@Test
+	  	//test to get an item and confirm it's in the cart
 	    public void GetMensShirt() throws Exception {
 	    	String coat = "Adult Android Superhero T-Shirt";
 	    	HomePage home = new HomePage(Setup());
@@ -23,7 +24,8 @@ public class MensShirtTest extends GenericTest{
 	    	CloseDriver();
 	    }
 	    
-	    //@Test
+	    @Test
+	  	//a full test from selecting an item to the checkout
 	    public void BuyMensShirt() throws Exception {
 	    	String email = "Test@test.com";
 	    	String cardName = "Jim Jones";
@@ -69,6 +71,7 @@ public class MensShirtTest extends GenericTest{
 	    }
 	    
 	    @Test
+	    //Add 2 specified items to the cart
 	    public void AddTwoItemsToCart() throws Exception{
 	       	String coat = "Adult Android Superhero T-Shirt";
 	       	String coat2 = "Basic Black T-Shirt";
@@ -87,6 +90,7 @@ public class MensShirtTest extends GenericTest{
 	    }
 	    
 	    @Test
+	    //add all the items on the page to the cart
 	    public void AddAllItemsToCart() throws Exception {
 	    	HomePage home = new HomePage(Setup());
 	    	MensShirts men =  home.GoToMensShirts();
@@ -103,6 +107,7 @@ public class MensShirtTest extends GenericTest{
 	    }
 	    
 	    @Test
+	  //add multiple of one item
 	    public void AddQuantOfSameItem() throws Exception {
 	    	String coat = "Adult Android Superhero T-Shirt";
 	    	int quant = 4;
@@ -124,6 +129,7 @@ public class MensShirtTest extends GenericTest{
 	    }
 	    
 	    @Test//(groups= {"Single"})
+	    //add an item of a specified size
 	    public void AddShirtOfSize() throws Exception{
 	    	//set the basic variables
 	    	String coat = "Adult Android Superhero T-Shirt";
