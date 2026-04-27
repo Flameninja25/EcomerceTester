@@ -42,6 +42,43 @@ public class HomePage {
 		return womenShirts;
 	}
 	
+	//use button on the home page to go to mens outwear page
+	public MensClothesPage FrontToMensClothes() {
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='home']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector(".iron-selected")).getShadowRoot();
+		shadow1.findElement(By.cssSelector("a[aria-label=\"Men's Outerwear Shop Now\"]")).click();
+		MensClothesPage mensClothes = new MensClothesPage(driver);
+		return mensClothes;
+	}
+	
+	//use button on the home page to go to womens outwear page
+	public WomensClothesPage FrontToWomensClothes() {
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='home']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector(".iron-selected")).getShadowRoot();
+		shadow1.findElement(By.cssSelector("a[aria-label='Ladies Outerwear Shop Now']")).click();
+		WomensClothesPage womensClothes = new WomensClothesPage(driver);
+		return womensClothes;
+	}
+	
+	//use button on the home page to go to mens shirts page
+	public MensShirts FrontToMensShirts() {
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='home']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector(".iron-selected")).getShadowRoot();
+		shadow1.findElement(By.cssSelector("a[aria-label=\"Men's T-Shirts Shop Now\"]")).click();
+		MensShirts mensShirts = new MensShirts(driver);
+		return mensShirts;
+	}
+	
+	//use button on the home page to go to womens shirts page
+	public WomensShirts FrontToWomensShirts() {
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='home']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector(".iron-selected")).getShadowRoot();
+		shadow1.findElement(By.cssSelector("a[aria-label='Ladies T-Shirts Shop Now']")).click();
+		WomensShirts womensShirts = new WomensShirts(driver);
+		return womensShirts;
+	}
+	
+	
 	//go to the cart
 	public CartPage GoToCartPage() {
 		driver.findElement(By.id("icon")).click();

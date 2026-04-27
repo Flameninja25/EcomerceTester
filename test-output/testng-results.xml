@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="10" total="11" passed="1" failed="0" skipped="0">
+<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-03-09T13:42:51 GMT" name="Suite" finished-at="2026-03-09T13:43:32 GMT" duration-ms="40250">
+  <suite started-at="2026-04-27T13:53:27 BST" name="Suite" finished-at="2026-04-27T13:53:31 BST" duration-ms="4217">
     <groups>
       <group name="Single">
-        <method signature="CheckOutTest.OrderPrice()[pri:0, instance:FlameNinja.EcomerceTester.CheckOutTest@2034b64c]" name="OrderPrice" class="FlameNinja.EcomerceTester.CheckOutTest"/>
+        <method signature="HomePageTest.HomeButtons()[pri:0, instance:FlameNinja.EcomerceTester.HomePageTest@54422e18]" name="HomeButtons" class="FlameNinja.EcomerceTester.HomePageTest"/>
       </group> <!-- Single -->
     </groups>
-    <test started-at="2026-03-09T13:42:51 GMT" name="FullTest" finished-at="2026-03-09T13:43:32 GMT" duration-ms="40250">
-      <class name="FlameNinja.EcomerceTester.CheckOutTest">
-        <test-method signature="OrderPrice()[pri:0, instance:FlameNinja.EcomerceTester.CheckOutTest@2034b64c]" started-at="2026-03-09T13:42:51 GMT" name="OrderPrice" finished-at="2026-03-09T13:43:32 GMT" duration-ms="40222" status="PASS">
+    <test started-at="2026-04-27T13:53:27 BST" name="FullTest" finished-at="2026-04-27T13:53:31 BST" duration-ms="4217">
+      <class name="FlameNinja.EcomerceTester.HomePageTest">
+        <test-method signature="HomeButtons()[pri:0, instance:FlameNinja.EcomerceTester.HomePageTest@54422e18]" started-at="2026-04-27T13:53:27 BST" name="HomeButtons" finished-at="2026-04-27T13:53:31 BST" duration-ms="4195" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- OrderPrice -->
-      </class> <!-- FlameNinja.EcomerceTester.CheckOutTest -->
+        </test-method> <!-- HomeButtons -->
+      </class> <!-- FlameNinja.EcomerceTester.HomePageTest -->
     </test> <!-- FullTest -->
   </suite> <!-- Suite -->
 </testng-results>

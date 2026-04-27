@@ -11,7 +11,7 @@
    <test thread-count="5" name="FullTest">
     <classes> 
 
-      <class name="FlameNinja.EcomerceTester.CheckOutTest"/>    
+      <class name="FlameNinja.EcomerceTester.HomePageTest"/>    
     </classes>
   </test> <!--Test for Submitting an Order-->
   

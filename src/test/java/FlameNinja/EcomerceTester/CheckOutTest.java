@@ -24,7 +24,7 @@ public class CheckOutTest extends GenericTest{
     	CloseDriver();
 	}
 	
-	 @Test(groups= {"Single"})
+	 @Test
 	 //check that the full order price is equal to the sum of the items
 	public void OrderPrice() throws Exception{
 		String coatOne = "Adult Android Superhero T-Shirt";
