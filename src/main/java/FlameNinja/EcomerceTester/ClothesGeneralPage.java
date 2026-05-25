@@ -50,6 +50,7 @@ public class ClothesGeneralPage {
 		//add all the items to the list
 		for(int i = 1; i < GetNumberOfItems(driver); i++) {
 			SearchContext item = GetItem(driver, i);
+			//save there title/name
 			String text = item.findElement(By.cssSelector(".title")).getText();
 			itemNames.add(text);
 		}
@@ -62,6 +63,34 @@ public class ClothesGeneralPage {
 	//go to the item page
 	public ItemPage GoToItemPage() {
 		return new ItemPage(driver);
+	}
+	
+	public CartPage GoToCartPage() {
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='list']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector("paper-icon-button[aria-label='Shopping cart: 1 item']")).getShadowRoot();
+		shadow1.findElement(By.cssSelector("#icon")).click();
+		return new CartPage(driver);
+	}
+	
+	//use links at top of page no matter the page the test is on
+	public MensClothesPage GoToMensOut() {
+		AbstractClass.shadow.findElement(By.linkText("Men's Outerwear")).click();	
+		return new MensClothesPage(driver);
+	}
+	
+	public MensShirts GoToMensShirts() {
+		AbstractClass.shadow.findElement(By.linkText("Men's T-Shirts")).click();	
+		return new MensShirts(driver);
+	}
+	
+	public WomensClothesPage GoToWomensOut() {
+		AbstractClass.shadow.findElement(By.linkText("Ladies Outwear")).click();	
+		return new WomensClothesPage(driver);
+	}
+	
+	public WomensShirts GoToWomensShirts() {
+		AbstractClass.shadow.findElement(By.linkText("Ladies T-Shirts")).click();	
+		return new WomensShirts(driver);
 	}
 	
 }

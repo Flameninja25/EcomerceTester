@@ -37,11 +37,9 @@ public class MensClothesPage extends ClothesGeneralPage{
 	
 	//add an item to the cart depending on the name of the item
 	public void ChooseItem(String cloth) throws Exception {
-		//AbstractClass.getShadowPage(driver);
-		//SearchContext shadow = AbstractClass.shadowPage;
+		//check al items and compare it to the wanted string
 		for(int i = 1 ; i < GetNumberOfItems(driver) ; i++) {
 			SearchContext test = GetItem(driver,i);
-			
 			String shadowText = test.findElement(By.cssSelector(".title")).getText().trim();
 			if(shadowText.contains(cloth)) {
 				test.findElement(By.cssSelector(".title")).click();

@@ -100,14 +100,19 @@ public class MensPageTest extends GenericTest{
     @Test
     //add all the items on the page to the cart
     public void AddAllItemsToCart() throws Exception {
+    	//do the base setup
     	HomePage home = new HomePage(Setup());
     	MensClothesPage men =  home.GoToMensClothes();
+    	//get a list of all the items
     	String[] items = men.GetListOfItems();
+    	//for each item in the list do a for loop to increment through them all
     	for(String x :items) {
     		men.ChooseItem(x);
+    		//follow each item to the item page and select to add it to cart
     		ItemPage itemPage = men.GoToItemPage();
     		itemPage.AddItemToCart();
     		Thread.sleep(500);
+    		//return to the original main page
     		itemPage.StepBack();
     	}
     	assertTrue(true);
