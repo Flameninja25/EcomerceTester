@@ -34,6 +34,16 @@ public class CheckOutPage {
 		Thread.sleep(500);
 	}
 	
+	public void SelectAltAddress() throws Exception{
+		SearchContext shadow0 = driver.findElement(By.cssSelector("shop-app[page='checkout']")).getShadowRoot();
+		SearchContext shadow1 = shadow0.findElement(By.cssSelector(".iron-selected")).getShadowRoot();
+		shadow1.findElement(By.cssSelector("shop-checkbox")).click();
+	}
+	
+	public void EnterAltAddress() throws Exception{
+		
+	}
+	
 	//add all the details to the checkout using a list of strings
 	public boolean AddDetails(List<String> info) throws Exception {
 		Thread.sleep(1000);
@@ -101,6 +111,29 @@ public class CheckOutPage {
 		return false;
 	}
 	
+	//use after place order
+	public boolean CheckOutErrors() {
+		if(ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Email']")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Cardholder Name']")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Phone Number']")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Card Number']")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(5) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(6) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(7) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(7) > shop-input:nth-child(2) > shop-md-decorator:nth-child(2)")).size() > 0) {return false;}		
+		if(ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid CVV']")).size() > 0) {return false;}
+		return true;
+	}
+	
+	//check errors in the alternative billing address
+	public boolean CheckAltErrors() {
+		if(ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(11) > div:nth-child(1) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(11) > div:nth-child(2) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(11) > div:nth-child(3) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0) {return false;}
+		if(ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(11) > div:nth-child(3) > shop-input:nth-child(2) > shop-md-decorator:nth-child(2)")).size() > 0) {return false;}
+		return true;
+	}
+	
 	//enter and check each of the fields
 	public boolean EnterEmail(String email) throws Exception {
 		GetShadow();
@@ -118,52 +151,84 @@ public class CheckOutPage {
 	
 	public boolean EnterPhoneNumber(String phoneNumber) throws Exception {
 		GetShadow();
-		ShadowUse.findElement(By.cssSelector("#accountNumber")).sendKeys();
+		ShadowUse.findElement(By.cssSelector("#accountNumber")).sendKeys(phoneNumber);
 		boolean isPresent = ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Phone Number']")).size() > 0;
 		return isPresent;
 	}
 	
 	public boolean EnterCCNumber(String ccNumber) throws Exception {
 		GetShadow();
-		ShadowUse.findElement(By.cssSelector("#ccNumber")).sendKeys();
-		boolean isPresent = ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Email']")).size() > 0;
+		ShadowUse.findElement(By.cssSelector("#ccNumber")).sendKeys(ccNumber);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Card Number']")).size() > 0;
 		return isPresent;
 	}
 	
+	//these checks need a different locator since there are multiple of the same fields so the error message locator would have conflicts.
 	public boolean EnterAddress(String address) throws Exception {
 		GetShadow();
-		ShadowUse.findElement(By.cssSelector("#shipAddress")).sendKeys();
-		boolean isPresent = ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Address']")).size() > 0;
+		ShadowUse.findElement(By.cssSelector("#shipAddress")).sendKeys(address);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(5) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0;
 		return isPresent;
 	}
 	
 	public boolean EnterCity(String city) throws Exception {
 		GetShadow();
-		ShadowUse.findElement(By.cssSelector("#shipCity")).sendKeys();
-		boolean isPresent = ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid City']")).size() > 0;
+		ShadowUse.findElement(By.cssSelector("#shipCity")).sendKeys(city);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(6) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0;
 		return isPresent;
 	}
 	
 	public boolean EnterState(String state) throws Exception {
 		GetShadow();
-		ShadowUse.findElement(By.cssSelector("#shipState")).sendKeys();
-		boolean isPresent = ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid State/Province']")).size() > 0;
+		ShadowUse.findElement(By.cssSelector("#shipState")).sendKeys(state);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(7) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0;
 		return isPresent;
 	}
 	
 	public boolean EnterZip(String zip) throws Exception {
 		GetShadow();
-		ShadowUse.findElement(By.cssSelector("#shipZip")).sendKeys();
-		boolean isPresent = ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid Zip/Postal Code']")).size() > 0;
+		ShadowUse.findElement(By.cssSelector("#shipZip")).sendKeys(zip);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(7) > shop-input:nth-child(2) > shop-md-decorator:nth-child(2)")).size() > 0;
 		return isPresent;
 	}
 	
 	public boolean EnterCVV(String cvv) throws Exception {
 		GetShadow();
-		ShadowUse.findElement(By.cssSelector("#ccCVV")).sendKeys();
+		ShadowUse.findElement(By.cssSelector("#ccCVV")).sendKeys(cvv);
 		boolean isPresent = ShadowUse.findElements(By.cssSelector("shop-md-decorator[error-message='Invalid CVV']")).size() > 0;
 		return isPresent;
 	}
+	
+	//these errors are only visible after checkout is clicked
+	public boolean AltEnterAddress(String altAddress) throws Exception {
+		GetShadow();
+		ShadowUse.findElement(By.cssSelector("#shipAddress")).sendKeys(altAddress);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(11) > div:nth-child(1) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0;
+		return isPresent;
+	}
+	
+	public boolean AltEnterCity(String altCity) throws Exception {
+		GetShadow();
+		ShadowUse.findElement(By.cssSelector("#shipCity")).sendKeys(altCity);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(11) > div:nth-child(2) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0;
+		return isPresent;
+	}
+	
+	public boolean AltEnterState(String altState) throws Exception {
+		GetShadow();
+		ShadowUse.findElement(By.cssSelector("#shipState")).sendKeys(altState);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(11) > div:nth-child(3) > shop-input:nth-child(1) > shop-md-decorator:nth-child(2)")).size() > 0;
+		return isPresent;
+	}
+	
+	public boolean AltEnterZip(String altZip) throws Exception {
+		GetShadow();
+		ShadowUse.findElement(By.cssSelector("#shipZip")).sendKeys(altZip);
+		boolean isPresent = ShadowUse.findElements(By.cssSelector("div:nth-child(2) > iron-pages:nth-child(1) > div:nth-child(1) > iron-form:nth-child(1) > form:nth-child(1) > div:nth-child(3) > section:nth-child(1) > div:nth-child(11) > div:nth-child(3) > shop-input:nth-child(2) > shop-md-decorator:nth-child(2)")).size() > 0;
+		return isPresent;
+	}
+	
+	
 	
 	
 }
