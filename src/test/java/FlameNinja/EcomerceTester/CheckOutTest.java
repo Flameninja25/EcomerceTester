@@ -167,7 +167,19 @@ public class CheckOutTest extends GenericTest{
     	values.add(expireDate);
     	values.add(country);
     	
+    	//alt address details
+    	String altAddress = "6362 Agua Dr";
+    	String altCity = "Las Vegas";
+    	String altState = "Las Vegas";
+    	String altPostCode = "NV 89103";
+    	String altCountry = "United States";
     	
+    	List<String> altValues = new ArrayList<>();
+    	altValues.add(altAddress);
+    	altValues.add(altCity);
+    	altValues.add(altState);
+    	altValues.add(altPostCode);
+    	altValues.add(altCountry);    	
     	
     	String coat = "Anvil L/S Crew Neck - Grey";
     	HomePage home = new HomePage(Setup());
@@ -178,8 +190,61 @@ public class CheckOutTest extends GenericTest{
     	item.AddItemToCart();
     	CartPage cart = item.GoToCartPage();
     	CheckOutPage checkOut = cart.GoToCheckout();
+    	//add the alt details to the checkout
+    	checkOut.AddDetails(values);
+    	checkOut.SelectAltAddress();
+    	checkOut.AddAltDetails(altValues);
+    	SuccessPage finalPage = checkOut.ClickCheckOut();
+    	//check the errors incase of any errors in the checkout
+    	if(!checkOut.CheckOutErrors()) {assertTrue(false);}
+    	if(!checkOut.CheckAltErrors()) {assertTrue(false);}
+    	finalPage.ClickFinish();
+    	assertTrue(true);
+    	CloseDriver();
+    }
+    
+    @Test
+    //test made to fail with no details
+    public void FailDetails() throws Exception{
+    	String email = "T";
+    	String cardName = "Jim Jones";
+    	String phoneNumber = " ";
+    	String cardNumber = "2034010212341234";
+    	String address = "7828 Lafayette Avenue Brooklyn";
+    	String city = " ";
+    	String state = "New York";
+    	String postCode = "NY 11230";
+    	String cvv = "223";
+    	String expireDate = "05 2026";
+    	String country = "United States";
+    	
+    	List<String> values = new ArrayList<>();
+    	values.add(email);
+    	values.add(cardName);
+    	values.add(phoneNumber);
+    	values.add(cardNumber);
+    	values.add(address);
+    	values.add(city);
+    	values.add(state);
+    	values.add(postCode);
+    	values.add(cvv);
+    	values.add(expireDate);
+    	values.add(country);
+    	
+    	String coat = "Anvil L/S Crew Neck - Grey";
+    	HomePage home = new HomePage(Setup());
+    	MensClothesPage men =  home.GoToMensClothes();
+    	//men.tester();
+    	men.ChooseItem(coat);
+    	ItemPage item = men.GoToItemPage();
+    	item.AddItemToCart();
+    	CartPage cart = item.GoToCartPage();
+    	CheckOutPage checkOut = cart.GoToCheckout();
+    	//add the alt details to the checkout
     	checkOut.AddDetails(values);
     	SuccessPage finalPage = checkOut.ClickCheckOut();
+    	//check the errors incase of any errors in the checkout
+    	if(!checkOut.CheckOutErrors()) {assertTrue(false);}
     	finalPage.ClickFinish();
     	assertTrue(true);
     	CloseDriver();

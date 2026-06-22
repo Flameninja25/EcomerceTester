@@ -74,6 +74,17 @@ public class CheckOutPage {
 		return true;
 	}
 	
+	public boolean AddAltDetails(List<String> altInfo) throws Exception{
+		
+		if(!AltEnterAddress(altInfo.get(0))) {return false;}
+		if(!AltEnterCity(altInfo.get(1))) {return false;}
+		if(!AltEnterState(altInfo.get(2))) {return false;}
+		if(!AltEnterZip(altInfo.get(3))) {return false;}
+		Select selectCountry = new Select(ShadowUse.findElement(By.cssSelector("#billCountry")));
+		selectCountry.selectByVisibleText(altInfo.get(4));
+		return true;
+	}
+	
 	public boolean CheckItemPrice(String itemName, String price) throws Exception {
 		//get the item from the checkout list
 		WebElement neededItem = null;
