@@ -14,10 +14,10 @@ public class WomansShirtTest extends GenericTest{
 	  	public void GetWomenShirt() throws Exception {
 		  String coat = "Ladies Google New York T-Shirt";
 		  HomePage home = new HomePage(Setup());
-		  WomensShirts men =  home.GoToWomensShirts();
+		  WomensShirts women =  home.GoToWomensShirts();
 	    	//men.tester();
-	    	men.ChooseItem(coat);
-	    	ItemPage item = men.GoToItemPage();
+	    	women.ChooseItem(coat);
+	    	ItemPage item = women.GoToItemPage();
 	    	item.AddItemToCart();
 	    	CartPage cart = item.GoToCartPage();
 	    	//cart.GoToCheckout();
@@ -40,6 +40,7 @@ public class WomansShirtTest extends GenericTest{
 	    	String expireDate = "05 2026";
 	    	String country = "United States";
 	    	
+	    	//set checkout values in a list
 	    	List<String> values = new ArrayList<>();
 	    	values.add(email);
 	    	values.add(cardName);
@@ -53,14 +54,12 @@ public class WomansShirtTest extends GenericTest{
 	    	values.add(expireDate);
 	    	values.add(country);
 	    	
-	    	
-	    	
+	    	//add the item and once on the checkout page add all the values set above
 	    	String coat = "Ladies Google New York T-Shirt";
 	    	HomePage home = new HomePage(Setup());
-	    	WomensShirts men =  home.GoToWomensShirts();
-	    	//men.tester();
-	    	men.ChooseItem(coat);
-	    	ItemPage item = men.GoToItemPage();
+	    	WomensShirts women =  home.GoToWomensShirts();
+	    	women.ChooseItem(coat);
+	    	ItemPage item = women.GoToItemPage();
 	    	item.AddItemToCart();
 	    	CartPage cart = item.GoToCartPage();
 	    	CheckOutPage checkOut = cart.GoToCheckout();
@@ -77,13 +76,14 @@ public class WomansShirtTest extends GenericTest{
 	       	String coat = "Ladies Google New York T-Shirt";
 	       	String coat2 = "Bella Ladies Favorite Tee";
 	    	HomePage home = new HomePage(Setup());
-	    	WomensShirts men =  home.GoToWomensShirts();
+	    	WomensShirts women =  home.GoToWomensShirts();
 	    	//men.tester();
-	    	men.ChooseItem(coat);
-	    	ItemPage item = men.GoToItemPage();
+	    	women.ChooseItem(coat);
+	    	//add both items to the cart
+	    	ItemPage item = women.GoToItemPage();
 	    	item.AddItemToCart();
 	    	item.StepBack();
-	    	men.ChooseItem(coat2);
+	    	women.ChooseItem(coat2);
 	    	item.AddItemToCart();
 	    	CartPage cart = item.GoToCartPage();
 	    	assertTrue(cart.CheckDifItemsInCart() == 2);
@@ -94,11 +94,12 @@ public class WomansShirtTest extends GenericTest{
 	    //add all items on the page to the cart
 	    public void AddAllItemsToCart() throws Exception {
 	    	HomePage home = new HomePage(Setup());
-	    	WomensShirts men =  home.GoToWomensShirts();
-	    	String[] items = men.GetListOfItems();
+	    	WomensShirts women =  home.GoToWomensShirts();
+	    	//loop through all the items on the page
+	    	String[] items = women.GetListOfItems();
 	    	for(String x :items) {
-	    		men.ChooseItem(x);
-	    		ItemPage itemPage = men.GoToItemPage();
+	    		women.ChooseItem(x);
+	    		ItemPage itemPage = women.GoToItemPage();
 	    		itemPage.AddItemToCart();
 	    		Thread.sleep(500);
 	    		itemPage.StepBack();
@@ -110,12 +111,14 @@ public class WomansShirtTest extends GenericTest{
 	    @Test
 	    //add multiple of one item
 	    public void AddQuantOfSameItem() throws Exception {
+	    	//set the values
 	    	String coat = "Ladies Google New York T-Shirt";
 	    	int quant = 4;
 	    	HomePage home = new HomePage(Setup());
-	    	WomensShirts men = home.GoToWomensShirts();
-	    	men.ChooseItem(coat);
-	    	ItemPage itemP = men.GoToItemPage();
+	    	WomensShirts women = home.GoToWomensShirts();
+	    	women.ChooseItem(coat);
+	    	ItemPage itemP = women.GoToItemPage();
+	    	//set the items quantity to the set amount above
 	    	itemP.SetAmount(quant);
 	    	itemP.AddItemToCart();
 	    	CartPage cart = itemP.GoToCartPage();
@@ -137,9 +140,9 @@ public class WomansShirtTest extends GenericTest{
 	    	String size = "L";
 	    	//got to the mens page through the home page and add the correct item
 	    	HomePage home = new HomePage(Setup());
-	    	WomensShirts men = home.GoToWomensShirts();
-	    	men.ChooseItem(coat);
-	    	ItemPage itemP = men.GoToItemPage();
+	    	WomensShirts women = home.GoToWomensShirts();
+	    	women.ChooseItem(coat);
+	    	ItemPage itemP = women.GoToItemPage();
 	    	itemP.SetSize(size);
 	    	itemP.AddItemToCart();
 	    	CartPage cart = itemP.GoToCartPage();
@@ -160,9 +163,9 @@ public class WomansShirtTest extends GenericTest{
 	    	String[] size = {"XS","S","M","L","XL"};
 	    	//got to the mens page through the home page and add the correct item
 	    	HomePage home = new HomePage(Setup());
-	    	WomensShirts men = home.GoToWomensShirts();
-	    	men.ChooseItem(coat);
-	    	ItemPage itemP = men.GoToItemPage();
+	    	WomensShirts women = home.GoToWomensShirts();
+	    	women.ChooseItem(coat);
+	    	ItemPage itemP = women.GoToItemPage();
 	    	//loop through each size and add them to the cart
 	    	for(String x :size) {
 	        	itemP.SetSize(x);

@@ -154,6 +154,7 @@ public class CheckOutTest extends GenericTest{
     	String expireDate = "05 2026";
     	String country = "United States";
     	
+    	//create an array of values
     	List<String> values = new ArrayList<>();
     	values.add(email);
     	values.add(cardName);
@@ -174,6 +175,7 @@ public class CheckOutTest extends GenericTest{
     	String altPostCode = "NV 89103";
     	String altCountry = "United States";
     	
+    	//list to store the values for the alt address
     	List<String> altValues = new ArrayList<>();
     	altValues.add(altAddress);
     	altValues.add(altCity);
@@ -181,6 +183,7 @@ public class CheckOutTest extends GenericTest{
     	altValues.add(altPostCode);
     	altValues.add(altCountry);    	
     	
+    	//go from home to clothes
     	String coat = "Anvil L/S Crew Neck - Grey";
     	HomePage home = new HomePage(Setup());
     	MensClothesPage men =  home.GoToMensClothes();
@@ -218,6 +221,7 @@ public class CheckOutTest extends GenericTest{
     	String expireDate = "05 2026";
     	String country = "United States";
     	
+    	//list to store wanted values
     	List<String> values = new ArrayList<>();
     	values.add(email);
     	values.add(cardName);

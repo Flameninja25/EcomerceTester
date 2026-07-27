@@ -47,6 +47,7 @@ public class MensPageTest extends GenericTest{
     	String expireDate = "05 2026";
     	String country = "United States";
     	
+    	//list to store values
     	List<String> values = new ArrayList<>();
     	values.add(email);
     	values.add(cardName);
@@ -198,6 +199,6 @@ public class MensPageTest extends GenericTest{
     	
 		//home.RandomTest();
     	assertTrue(true);
-    	
+    	CloseDriver();
     }
 }

@@ -107,12 +107,13 @@ public class MensShirtTest extends GenericTest{
 	    }
 	    
 	    @Test
-	  //add multiple of one item
+	    //add multiple of one item
 	    public void AddQuantOfSameItem() throws Exception {
 	    	String coat = "Adult Android Superhero T-Shirt";
 	    	int quant = 4;
 	    	HomePage home = new HomePage(Setup());
 	    	MensShirts men = home.GoToMensShirts();
+	    	//set the quantity of the item to the set amount
 	    	men.ChooseItem(coat);
 	    	ItemPage itemP = men.GoToItemPage();
 	    	itemP.SetAmount(quant);
